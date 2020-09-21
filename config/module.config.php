@@ -118,6 +118,7 @@ return [
     'view_manager' => [
         'template_map' => [
             'layout/report' => __DIR__ . '/../view/report/layouts/report.phtml',
+            'report/context' => __DIR__ . '/../view/report/partials/context_report.phtml',
         ],
         'template_path_stack' => [
             __DIR__ . '/../view',

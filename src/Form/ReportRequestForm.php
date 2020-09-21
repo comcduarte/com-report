@@ -47,5 +47,7 @@ class ReportRequestForm extends AbstractBaseForm
                 ],
             ],['priority' => 0]);
         }
+        
+        $this->remove('STATUS');
     }
 }
