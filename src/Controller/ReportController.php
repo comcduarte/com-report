@@ -20,6 +20,8 @@ class ReportController extends AbstractBaseController
     
     public function viewAction()
     {
+        $view = new ViewModel();
+        
         $this->layout('layout/report');
         
         
@@ -67,10 +69,11 @@ class ReportController extends AbstractBaseController
             return $e;
         }
         
-        return ([
-            'data' => $resultSet->toArray(),
-            'view' => $report->VIEW,
-            'title' => $report->NAME,
-        ]);
+        $view->setVariable('report', $report);
+        $view->setVariable('data', $resultSet->toArray());
+        $view->setVariable('view', $report->VIEW);
+        $view->setVariable('title', $report->NAME);
+        
+        return $view;
     }
 }

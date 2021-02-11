@@ -38,6 +38,18 @@ class ReportForm extends AbstractBaseForm
         ],['priority' => 100]);
         
         $this->add([
+            'name' => 'FUNC',
+            'type' => Text::class,
+            'attributes' => [
+                'id' => 'FUNC',
+                'class' => 'form-control',
+            ],
+            'options' => [
+                'label' => 'Function Name',
+            ],
+        ],['priority' => 100]);
+        
+        $this->add([
             'name' => 'VIEW',
             'type' => Text::class,
             'attributes' => [

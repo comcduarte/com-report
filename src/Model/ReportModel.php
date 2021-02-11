@@ -9,6 +9,7 @@ class ReportModel extends AbstractBaseModel
     public $NAME;
     public $CODE;
     public $VIEW;
+    public $FUNC;
     
     public function __construct(Adapter $adapter)
     {

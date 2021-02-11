@@ -39,6 +39,7 @@ class ReportConfigController extends AbstractConfigController
         $ddl->addColumn(new Varchar('NAME', 255, TRUE));
         $ddl->addColumn(new Text('CODE'));
         $ddl->addColumn(new Varchar('VIEW', 255, TRUE));
+        $ddl->addColumn(new Varchar('FUNC', 255, TRUE));
         
         $ddl->addColumn(new Integer('STATUS', TRUE));
         $ddl->addColumn(new Datetime('DATE_CREATED', TRUE));
