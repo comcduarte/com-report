@@ -20,7 +20,7 @@ return [
                     'route' => '/reports',
                     'defaults' => [
                         'action' => 'index',
-                        'controller' => ReportController::class,
+                        'controller' => 'report-controller',
                     ],
                 ],
                 'may_terminate' => TRUE,
@@ -42,7 +42,7 @@ return [
                             'route' => '/[:action[/:uuid]]',
                             'defaults' => [
                                 'action' => 'index',
-                                'controller' => ReportController::class,
+                                'controller' => 'report-controller',
                             ],
                         ],
                     ],
@@ -58,6 +58,9 @@ return [
         ],
     ],
     'controllers' => [
+        'aliases' => [
+            'report-controller' => ReportController::class,
+        ],
         'factories' => [
             ReportConfigController::class => ReportConfigControllerFactory::class,
             ReportController::class => ReportControllerFactory::class,
