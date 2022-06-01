@@ -37,7 +37,7 @@ class ReportConfigController extends AbstractConfigController
         $ddl->addColumn(new Varchar('UUID', 36));
         
         $ddl->addColumn(new Varchar('NAME', 255, TRUE));
-        $ddl->addColumn(new Text('CODE'));
+        $ddl->addColumn(new Text('CODE', 65535, TRUE));
         $ddl->addColumn(new Varchar('VIEW', 255, TRUE));
         $ddl->addColumn(new Varchar('FUNC', 255, TRUE));
         
