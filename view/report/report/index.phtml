@@ -1,0 +1,33 @@
+<div class="container">
+	<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Report Name</th>
+			<th>View File</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach ($this->data as $record) : ?>
+		<tr>
+			<td>
+				<?php $url = $this->url('reports/default',['action' => 'view','uuid' => $record['UUID']]); ?>
+				<a href="<?php echo $url; ?>" target="_blank"><?php echo $record['NAME']; ?></a>
+			</td>
+			<td><?php echo $record['VIEW']; ?></td>
+			<td>
+				<div class="dropdown">
+                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    	<i class="fas fa-bars"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    	<a class="dropdown-item" href="<?=$this->url('reports/default', ['action' => 'update', strtolower($this->primary_key) => $record[$this->primary_key]])?>">Update</a>
+                    	<a class="dropdown-item bg-danger text-white" href="<?=$this->url('reports/default', ['action' => 'delete', strtolower($this->primary_key) => $record[$this->primary_key]])?>">Delete</a>
+                    </div>
+                </div>
+			</td>
+		</tr>
+		<?php endforeach; ?>
+	</tbody>
+	</table>
+</div>
