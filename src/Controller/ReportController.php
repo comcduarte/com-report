@@ -53,11 +53,16 @@ class ReportController extends AbstractBaseController
         $revised_code = "";
         
         $vars = [];
-        for ($i = 0; $i < $data['NUM_VARS']; $i++) {
-            $vars[] = $data['FIELD' . $i];
-            $vars[] = $data['VALUE' . $i];
+        if (isset($data['NUM_VARS'])) {
+            for ($i = 0; $i < $data['NUM_VARS']; $i++) {
+                $vars[] = $data['FIELD' . $i];
+                $vars[] = $data['VALUE' . $i];
+            }
+            $revised_code = vsprintf($report->CODE, $vars);
+        } else {
+            $revised_code = $report->CODE;
         }
-        $revised_code = vsprintf($report->CODE, $vars);
+        
         
         $statement = $this->adapter->createStatement($revised_code);
         
