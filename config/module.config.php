@@ -77,6 +77,7 @@ return [
                 'label' => 'Reports',
                 'route' => 'reports',
                 'class' => 'dropdown',
+                'order' => 90,
                 'resource' => 'reports/default',
                 'privilege' => 'menu',
                 'pages' => [
