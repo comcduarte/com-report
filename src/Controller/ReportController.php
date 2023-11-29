@@ -7,14 +7,53 @@ use Laminas\View\Model\ViewModel;
 use Report\Form\ReportRequestForm;
 use Report\Model\ReportModel;
 use Exception;
+use Laminas\Db\Sql\Select;
 
 class ReportController extends AbstractBaseController
 {
     public function indexAction()
     {
         $view = new ViewModel();
+        
+        $select = new Select();
+        $select->from($this->model->getTableName());
+        $select->columns([
+            'UUID' => 'UUID',
+            'Report Name' => 'NAME',
+            'View File' => 'VIEW',
+        ]);
+        $select->where(['reports.STATUS' => $this->model::ACTIVE_STATUS]);
+        $this->model->setSelect($select);
+        
         $view = parent::indexAction();
-        $view->setTemplate('report/report/index.phtml');
+        $view->setTemplate('base/subtable');
+        
+        $params = [
+            [
+                'route' => 'reports/default',
+                'action' => 'view',
+                'key' => 'UUID',
+                'label' => 'Open',
+            ],
+            [
+                'route' => 'reports/default',
+                'action' => 'update',
+                'key' => 'UUID',
+                'label' => 'Update',
+            ],
+            [
+                'route' => 'reports/default',
+                'action' => 'delete',
+                'key' => 'UUID',
+                'label' => 'Delete',
+            ],
+        ];
+        
+        $view->setVariables([
+            'params' => $params,
+            'search' => true,
+            'title' => 'Reports',
+        ]);
         return $view;
     }
     
