@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
+## 1.0.4
+- Upgraded to use subtable
+
 ## 1.0.3
 - Convert Interop Containers to PSR
 
