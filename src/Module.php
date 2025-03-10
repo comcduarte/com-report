@@ -4,7 +4,7 @@ namespace Report;
 class Module
 {
     const TITLE = "Report Module";
-    const VERSION = "v1.0.2";
+    const VERSION = "v1.0.4";
     
     public function getConfig()
     {
