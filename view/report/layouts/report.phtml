@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <?= $this->headTitle($this->title)->setSeparator(' - ')->setAutoEscape(false) ?>
+        <?= $this->headTitle(\Application\Module::TITLE)->setSeparator(' - ')->setAutoEscape(false) ?>
 
         <?= $this->headMeta()
             ->appendName('viewport', 'width=device-width, initial-scale=1.0')
@@ -14,15 +14,46 @@
         <?= $this->headLink(['rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'])
             ->headLink(['rel' => 'apple-touch-icon', 'href' => $this->basePath() . '/img/apple-touch-icon.png'])
             ->prependStylesheet($this->basePath('css/style.css'), 'screen,print')
-            ->prependStylesheet('https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', 'screen,print')
-            ->prependStylesheet('https://use.fontawesome.com/releases/v5.7.2/css/all.css', 'screen,print')
+            ->prependStylesheet('https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css', 'screen,print')
+            ->prependStylesheet('https://use.fontawesome.com/releases/v5.12.1/css/all.css', 'screen,print')
         ?>
+        <style type="text/css">
+            body { padding-top: 0px; }
+            
+            .dropdown-submenu{
+                position: relative;
+            }
+            .dropdown-submenu a::after{
+                transform: rotate(-90deg);
+                position: absolute;
+                right: 3px;
+                top: 40%;
+            }
+            .dropdown-submenu:hover .dropdown-menu, .dropdown-submenu:focus .dropdown-menu{
+                display: flex;
+                flex-direction: column;
+                position: absolute !important;
+                margin-top: -30px;
+                left: 100%;
+            }
+            @media (max-width: 992px) {
+                .dropdown-menu{
+                    width: 50%;
+                }
+                .dropdown-menu .dropdown-submenu{
+                    width: auto;
+                }
+            }
+        </style>
 
         <!-- Scripts -->
         <?= $this->headScript()
-            ->prependFile('https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js')
-            ->prependFile('https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js')
-            ->prependFile('https://code.jquery.com/jquery-3.3.1.slim.min.js')
+            ->prependFile('https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js')
+            ->prependFile('https://code.jquery.com/jquery-3.4.1.slim.min.js')
+            ->prependFile('https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js')
+        ?>
+        <?= $this->inlineScript()
+            ->appendFile($this->basePath('js/application.js'))
         ?>
     </head>
     <body>
